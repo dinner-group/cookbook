@@ -1,3 +1,4 @@
+# Molecular-Dynamics-Essentials.md
 The pages linked here will hopefully be useful for anyone getting started with MD, or as a review for more experienced molecular dynamicists. I will add pages as I see fit, but I encourage anyone to add/edit as they encounter problems and solutions that could be of general use. These articles, as of now, will mostly be tailored to GROMACS, PLUMED, and VMD, although those are subject to change as the group evolves.
 
 Since the following pages will assume a basic level of familiarity with the above softwares, I **highly** recommend going through some online tutorials for some of the basics. Below are the ones I have historically found to be the most helpful - I recommend moving in the order of VMD - GROMACS - PLUMED, as they tend to build on one another.

@@ -1,3 +1,5 @@
+# AFINES.md
+# AFINES
 AFINES is our in-house simulation package for cytoskeletal networks, developed mostly by Simon Freedman. It is written in C++11 and depends on Boost.
 
 The main branch of the code can be found at [https://github.com/Simfreed/AFINES](https://github.com/Simfreed/AFINES).

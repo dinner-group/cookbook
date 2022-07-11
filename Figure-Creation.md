@@ -1,3 +1,4 @@
+# Figure-Creation.md
 Everyone needs to make figures, and sometimes that process can be a little...complicated. If you are looking for a guide on how to render high-quality molecular images from VMD, check out the [VMD Rendering Guide](/display/thecookbook/VMD+Rendering+Guide). This section, instead, will focus on various tips and tricks for commonly used figure generation/post-processing tools, from Python to Inkscape. Feel free to add any time you find something useful! 
 
 Making nice plots in Matplotlib

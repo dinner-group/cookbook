@@ -1,3 +1,4 @@
+# Run-Gromacs-on-the-GM4-Cluster.md
 The architecture and use of the gm4 partition is described in [Running Jobs on Midway](/display/thecookbook/Running+Jobs+on+Midway). Note that each user is only allowed to simultaneously submit 28 jobs to the gm4 partition. For MD, this means that you cannot submit a large array job to run many short simulations in parallel. Instead, you can run a shorter number of longer simulations, or manually manipulate your 28 gm4 jobs to submit many simulations. 
 
 Below is an example sbatch file to run 4 parallel Gromacs simulations on a GM4 node, each with 10 CPUs and 1 GPU.

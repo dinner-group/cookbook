@@ -1,3 +1,4 @@
+# Installing-AFINES.md
 To install AFINES, you will need _git_, _make_, a _C++11 compiler_, and _boost_.
 
 Downloading and compiling AFINES can be done as follows:

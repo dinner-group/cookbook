@@ -1,3 +1,4 @@
+# [GM4]-Only-one-job-runs-at-a-time.md
 Problem
 -------
 Sometimes the sbatch file does not like when you put multiple`mpirun -np 1`commands in the same file. I truly do not know why this is, as it should be fine. However, sometimes when I try to do it, nothing happens upon the second call to`mpirun`\- no errors or messages of any kind, just nothing.  The first simulation is running in the background, but the second simulation is not processed until the first one completes. 

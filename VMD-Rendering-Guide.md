@@ -1,3 +1,4 @@
+# VMD-Rendering-Guide.md
 This guide was originally developed by Lu Hong, and has since been (lightly) expanded by Adam Antoszewski. The normal VMD defaults are not suited for publication-quality figures.
 
 **[HERE](/download/attachments/232101322/VMDRC?version=1&modificationDate=1591802932000&api=v2)** is a sample .vmdrc file that will set most of the defaults listed below. You can save this as `${HOME}/.vmdrc` and these settings will apply by default to VMD. 

@@ -1,3 +1,4 @@
+# Making-a-Useful-.bashrc-file.md
 .bashrc files are particularly useful for automating common commands you run on the bash terminal. You should be very liberal in defining aliases that maximize efficiency. I find the most helpful ones are squeue commands that check jobs currently running, or sinteractive commands to start interactive sessions. In general, we have found that you should not load any modules in your bashrc, particularly anaconda. I alias short commands to load specific modules, instead. Below is my .bashrc file - note in particular the squeue commands that specify exactly the information I want to see, including the number of cores requested for each job. 
 
 ```

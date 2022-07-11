@@ -1,3 +1,4 @@
+# Run-Jupyter-Notebooks-on-a-Compute-Node.md
 Jupyter notebooks are convenient for plotting and exploratory coding but running them on your computer or on a login node is often not such a great idea when you're doing something computationally intensive, such as training a neural network. Running them on compute nodes will give you (and everyone else) a much better time. Note that compute nodes don't have internet access.
 
 Step-by-step guide

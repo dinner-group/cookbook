@@ -1,3 +1,4 @@
+# ThinLinc-stops-working-after-installing-Anaconda.md
 Problem
 -------
 

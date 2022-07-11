@@ -1,3 +1,4 @@
+# _Sidebar.md
   * [Home](https://github.com/antoszewski/test-wiki/wiki)
   * How-To Pages
     * [.bashrc Files](https://github.com/antoszewski/test-wiki/wiki/Making-a-Useful-.bashrc-file)

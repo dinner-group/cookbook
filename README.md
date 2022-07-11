@@ -1,1 +1,41 @@
+# README.md
 # cookbook
+
+* [Home](README.md)
+  * How-To Pages
+    * [.bashrc Files](./Making-a-Useful-.bashrc-file.md)
+    * [Run Jupyter Notebooks on a Compute Node](./Run-Jupyter-Notebooks-on-a-Compute-Node.md)
+  * [Python](./Python.md)
+    * [Introductory Jupyter Modules](./Introductory-Jupyter-Modules.md)
+  * [Midway Essentials](./Midway-Essentials.md)
+    * [Notes on Midway Modules](./Notes-on-Midway-Modules.md)
+    * [Running Jobs on Midway](./Running-Jobs-on-Midway.md)
+  * [Molecular Dynamics Essentials](./Molecular-Dynamics-Essentials.md)
+    * [GROMACS 2019.4 with GPU Support](./GROMACS-2019.4-with-GPU-Support.md)
+      * [Run GROMACS on the GM4 Cluster](./Run-Gromacs-on-the-GM4-Cluster.md)
+    * [Building a System with CHARMM-GUI](./Building-a-System-With-CHARMM-GUI.md)
+    * [MDP Options](./MDP-options.md)
+    * [Energy Minimization and Equilibration](./Energy-Minimization-and-Equilibration.md)
+    * [PLUMED Tips and Tricks](./PLUMED-Tips-and-Tricks.md)
+    * [VMD Rendering Guide](./VMD-Rendering-Guide.md)
+    * [VMD as an Analysis Tool](./VMD-as-an-Analysis-Tool.md)
+  * [MD Intermediate Skills](./MD-Intermediate-Skills.md)
+    * [Installing GROMACS](./Installing-GROMACS-on-Bridges-(XSEDE.md).md)
+    * [Replica Exchange Umbrella Sampling (REUS.md)](./Replica-Exchange-Umbrella-Sampling-(REUS).md)
+    * [Alpha-Helical Content of Proteins](./Alpha-helical-content-of-protein-sequences.md)
+  * [AFINES](./AFINES.md)
+    * [Installing AFINES](./Installing-AFINES.md)
+    * [AFINES Branches](./AFINES-Branches.md)
+  * [Figure Creation](./Figure-Creation.md)
+  * Troubleshooting Articles
+    * [\[GM4\] Only one job runs at a time](./%5BGM4%5D-Only-one-job-runs-at-a-time.md)
+    * [\[MD/VMD\] "Expected integer but got 08" Error When Running TCL Script](./%5BMD_VMD%5D-%20Expected-integer-but-got-08%20-Error-When-Running-TCL-Script.md)
+    * [\[Midway\] Modules need to be repeatedly loaded/unloaded before they work on a compute node](./%5BMidway%5D-Modules-need-to-be-repeatedly-loaded_unloaded-before-they-work-on-a-compute-node..md)
+    * [\[Midway\] I accidentally deleted a file!](./%5BMidway%5D-I-accidentally-deleted-a-file!.md)
+    * [\[Midway\] Help! I've lost write permissions!](./%5BMidway%5D-Help!-I've-lost-write-permissions!.md)
+    * [\[MD\] Mpiexec error prevents simulations from running](./%5BMD%5D-Mpiexec-error-prevents-simulations-from-running.md)
+    * [Matplotlib animations don't work on Midway](./Matplotlib-animations-don't-work-on-Midway.md)
+    * [Parallel jobs only taking up one node of a multi-node job](./Parallel-jobs-only-taking-up-1-node-of-a-multi-node-job-(common-with-GROMACS-5.1.4).md)
+    * [ThinLinc stops working after installing Anaconda](./ThinLinc-stops-working-after-installing-Anaconda.md)
+
+

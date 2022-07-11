@@ -1,3 +1,4 @@
+# Introductory-Jupyter-Modules.md
 A place to put some introductory resources on various sampling/analysis techniques. 
 
 These were originally developed for Advanced Special Topics in Chemical Theory, taught by Prof. Aaron Dinner in the Spring of 2019. The Ising Model/Umbrella Sampling module was adapted from an example generously provided by [Prof. Glen Hocky at NYU](https://hockygroup.hosting.nyu.edu/), a former postdoc in the group. 
