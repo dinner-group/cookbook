@@ -1,5 +1,5 @@
-# Making-a-Useful-.bashrc-file.md
-.bashrc files are particularly useful for automating common commands you run on the bash terminal. You should be very liberal in defining aliases that maximize efficiency. I find the most helpful ones are squeue commands that check jobs currently running, or sinteractive commands to start interactive sessions. In general, we have found that you should not load any modules in your bashrc, particularly anaconda. I alias short commands to load specific modules, instead. Below is my .bashrc file - note in particular the squeue commands that specify exactly the information I want to see, including the number of cores requested for each job. 
+# Making a Useful .bashrc file
+`.bashrc` files are particularly useful for automating common commands you run on the bash terminal. You should be very liberal in defining aliases that maximize efficiency. I find the most helpful ones are squeue commands that check jobs currently running, or sinteractive commands to start interactive sessions. In general, we have found that you should not load any modules in your bashrc, particularly anaconda. I alias short commands to load specific modules, instead. Below is my .bashrc file - note in particular the squeue commands that specify exactly the information I want to see, including the number of cores requested for each job. 
 
 ```
 # .bashrc
@@ -8,21 +8,40 @@
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
-
 # User specific aliases and functions
-alias anto="cd /project2/dinner/aanto"
-alias siwd="sinteractive --account=weare-dinner --partition=weare-dinner2 --qos=weare-dinner -t 06:00:00"
-alias siwd1="sinteractive --account=weare-dinner --partition=weare-dinner2 --qos=weare-dinner -t 12:00:00 --ntasks 12"
-alias gmx="gmx_mpi"
-alias sq="squeue --user=antoszewski -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.6D %.6C %R \""
-alias sqwd2="squeue -p weare-dinner2 -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.6D %.6C %R \""
-alias sqwd1="squeue -p weare-dinner1 -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.6D %.6C %R \""
-alias sqb="squeue -p broadwl -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.6D %.6C %R \""
-alias sqg="squeue -p gm4 -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.6D %.6C %R \""
-alias scr="cd /scratch/midway2/antoszewski"
-alias sw="watch squeue --user=antoszewski"
-alias pyt="export PATH=\"/project2/dinner/aanto/anaconda3/bin:$PATH\""
-alias cds="cd /cds/weare-dinner/aanto"
-alias mlv="module load vmd"
-alias mlg="source /project2/dinner/gromacs/sourceme.sh"
+alias clr="clear"
+alias ll="ls -alh"
+alias ml="module load"
+alias rm="rm -i"
+alias size="du -sh"
+alias ldir="ls -al | grep ^d"
+alias home="cd ~"
+alias scratch="cd /scratch/midway3/scguo"
+alias proj="cd /project/dinner/scguo"
+alias bdinner="cd /beagle3/dinner/scguo"
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
+alias mv="mv -i"
+alias cp="cp -i"
+alias attach="tmux attach -t"
+alias tls="tmux ls"
+alias tmux="tmux -2"
+alias rename="tmux rename-session -t"
+
+# Slurm aliases
+# alias gmx="gmx_mpi"
+alias sb="sbatch"
+alias sc="scancel"
+alias jobs="squeue -u scguo -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.10L %.6D %.6C %.10m %.6p %R \""
+alias sqd="squeue -p 'dinner,dinner-hm' -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.10L %.6D %.6C %.10m %.6p %R \""
+alias sqb="squeue -p beagle3 -o \"%.18i %.16P %.16j %.8u %.2t %.10M %.10L %.6D %.6C %.10m %.6p %R \""
+alias mlv="module load vmd/1.9.3"
+alias mlp="module load python/3.7.0"
+alias sid="sinfo -p dinner"
+alias sib="sinfo -p beagle3 -O 'partition,available,nodes,features,statecompact,nodelist'"
+alias sintd="sinteractive -p dinner --account=pi-dinner --qos=dinner --nodes=1 --ntasks=1"
+alias sintd8="sinteractive -p dinner --account=pi-dinner --qos=dinner --nodes=1 --ntasks=1 --cpus-per-task=8"
+alias sintd48="sinteractive -p dinner --account=pi-dinner --qos=dinner --nodes=1 --ntasks=1 --cpus-per-task=48"
 ```
