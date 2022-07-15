@@ -1,0 +1,42 @@
+# _Sidebar.md
+  * [Home](https://github.com/antoszewski/test-wiki/wiki)
+  * How-To Pages
+    * [.bashrc Files](https://github.com/antoszewski/test-wiki/wiki/Making-a-Useful-.bashrc-file)
+    * [Run Jupyter Notebooks on a Compute Node](https://github.com/antoszewski/test-wiki/wiki/Run-Jupyter-Notebooks-on-a-Compute-Node)
+  * [Python](https://github.com/antoszewski/test-wiki/wiki/Python)
+    * [Introductory Jupyter Modules](https://github.com/antoszewski/test-wiki/wiki/Introductory-Jupyter-Modules)
+  * [Midway Essentials](https://github.com/antoszewski/test-wiki/wiki/Midway-Essentials)
+    * [Notes on Midway Modules](https://github.com/antoszewski/test-wiki/wiki/Notes-on-Midway-Modules)
+    * [Running Jobs on Midway](https://github.com/antoszewski/test-wiki/wiki/Running-Jobs-on-Midway)
+  * [Molecular Dynamics Essentials](https://github.com/antoszewski/test-wiki/wiki/Molecular-Dynamics-Essentials)
+    * [GROMACS 2019.4 with GPU Support](https://github.com/antoszewski/test-wiki/wiki/GROMACS-2019.4-with-GPU-Support)
+      * [Run GROMACS on the GM4 Cluster](https://github.com/antoszewski/test-wiki/wiki/Run-Gromacs-on-the-GM4-Cluster)
+    * [Building a System with CHARMM-GUI](https://github.com/antoszewski/test-wiki/wiki/Building-a-System-With-CHARMM-GUI)
+    * [MDP Options](https://github.com/antoszewski/test-wiki/wiki/MDP-options)
+    * [Energy Minimization and Equilibration](https://github.com/antoszewski/test-wiki/wiki/Energy-Minimization-and-Equilibration)
+    * [PLUMED Tips and Tricks](https://github.com/antoszewski/test-wiki/wiki/PLUMED-Tips-and-Tricks)
+    * [VMD Rendering Guide](https://github.com/antoszewski/test-wiki/wiki/VMD-Rendering-Guide)
+    * [VMD as an Analysis Tool](https://github.com/antoszewski/test-wiki/wiki/VMD-as-an-Analysis-Tool)
+  * [MD Intermediate Skills](https://github.com/antoszewski/test-wiki/wiki/MD-Intermediate-Skills)
+    * [Installing GROMACS](https://github.com/antoszewski/test-wiki/wiki/Installing-GROMACS-on-Bridges-(XSEDE))
+    * [Replica Exchange Umbrella Sampling (REUS)](https://github.com/antoszewski/test-wiki/wiki/Replica-Exchange-Umbrella-Sampling-(REUS))
+    * [Alpha-Helical Content of Proteins](https://github.com/antoszewski/test-wiki/wiki/Alpha-helical-content-of-protein-sequences)
+  * [AFINES](https://github.com/antoszewski/test-wiki/wiki/AFINES)
+    * [Installing AFINES](https://github.com/antoszewski/test-wiki/wiki/Installing-AFINES)
+    * [AFINES Branches](https://github.com/antoszewski/test-wiki/wiki/AFINES-Branches)
+  * [Figure Creation](https://github.com/antoszewski/test-wiki/wiki/Figure-Creation)
+  * Troubleshooting Articles
+    * [\[GM4\] Only one job runs at a time](https://github.com/antoszewski/test-wiki/wiki/%5BGM4%5D-Only-one-job-runs-at-a-time)
+    * [\[MD/VMD\] "Expected integer but got 08" Error When Running TCL Script](https://github.com/antoszewski/test-wiki/wiki/%5BMD_VMD%5D-%20Expected-integer-but-got-08%20-Error-When-Running-TCL-Script)
+    * [\[Midway\] Modules need to be repeatedly loaded/unloaded before they work on a compute node](https://github.com/antoszewski/test-wiki/wiki/%5BMidway%5D-Modules-need-to-be-repeatedly-loaded_unloaded-before-they-work-on-a-compute-node.)
+    * [\[Midway\] I accidentally deleted a file!](https://github.com/antoszewski/test-wiki/wiki/%5BMidway%5D-I-accidentally-deleted-a-file!)
+    * [\[Midway\] Help! I've lost write permissions!](https://github.com/antoszewski/test-wiki/wiki/%5BMidway%5D-Help!-I've-lost-write-permissions!)
+    * [\[MD\] Mpiexec error prevents simulations from running](https://github.com/antoszewski/test-wiki/wiki/%5BMD%5D-Mpiexec-error-prevents-simulations-from-running)
+    * [Matplotlib animations don't work on Midway](https://github.com/antoszewski/test-wiki/wiki/Matplotlib-animations-don't-work-on-Midway)
+    * [Parallel jobs only taking up one node of a multi-node job](https://github.com/antoszewski/test-wiki/wiki/Parallel-jobs-only-taking-up-1-node-of-a-multi-node-job-(common-with-GROMACS-5.1.4))
+    * [ThinLinc stops working after installing Anaconda](https://github.com/antoszewski/test-wiki/wiki/ThinLinc-stops-working-after-installing-Anaconda)
+
+
+
+
+[//]: # (Adapted from https://www.npmjs.com/package/github-wiki-sidebar)
