@@ -36,5 +36,6 @@
     * [Matplotlib animations don't work on Midway](./Matplotlib-animations-don't-work-on-Midway.md)
     * [Parallel jobs only taking up one node of a multi-node job](./Parallel-jobs-only-taking-up-1-node-of-a-multi-node-job-(common-with-GROMACS-5.1.4).md)
     * [ThinLinc stops working after installing Anaconda](./ThinLinc-stops-working-after-installing-Anaconda.md)
+    * [\[Midway\] Intel MPI isn't working](./%5BMidway%5D%20Intel%20MPI%20isn't%20working.md)
 
 
