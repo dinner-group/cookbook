@@ -1,4 +1,4 @@
-# VMD-Rendering-Guide.md
+# VMD Rendering Guide
 This guide was originally developed by Lu Hong, and has since been (lightly) expanded by Adam Antoszewski. The normal VMD defaults are not suited for publication-quality figures.
 
 **[HERE](/download/attachments/232101322/VMDRC?version=1&modificationDate=1591802932000&api=v2)** is a sample .vmdrc file that will set most of the defaults listed below. You can save this as `${HOME}/.vmdrc` and these settings will apply by default to VMD. 
@@ -12,7 +12,7 @@ General settings
 4.  Only show solvent atoms when relevant. However, remember that they are still there, and play a vital role in most protein-related processes.
 5.  Ray tracing options: Display → Display settings
     1.  Set Shadows and Amb. Occl. both to On
-    2.  In general, AODirect × num.Lights + AOAmbient ≈ 1.8; I usually use AO Ambient = 0.80 and AO Direct = 0.40.
+    2.  In general, AODirect × num.Lights + AOAmbient ≈ 1.8; I usually use AO Ambient = 0.80 and AO Direct = 0.50 (with two lights).
 6.  You can select specific atoms to visualize through typing atom selection command in the _Selected Atoms_ box of the Graphics → Representations menu. Some useful keywords:
     1.  protein - only select atoms belonging to the protein
     2.  water/ion/solvent- only select water, ions, or all solvent atoms. 
@@ -45,7 +45,7 @@ Tips for close-ups
     6.  If you want to show water structure with Licorice, do not load your structure with a topology file. 
         1.  To keep waters whole, use the "same residue as" atom selection command. For example, to show waters within 3 angstroms of the heavy atoms of the sidechain from residue 10, one can type "same residue as (water within 3 of (sidechain and resid 10))"
 4.  For showing protein secondary structure:
-    1.  If the secondary structures obscure important residue structures, use NewCartoon with either Ghost (preferred) or Transparent material with the -trans\_max-surfaces 1 and -shadow\_filter\_off options. Otherwise see the next section.
+    1.  If the secondary structures obscure important residue structures, use NewCartoon with either Ghost (preferred) or Transparent material with the `-trans_max_surfaces 1` and `-shadow_filter_off options`. Otherwise see the next section.
     2.  Use Silver for Ghost material or White for Transparent material.
     3.  You can adjust the opacity of the Ghost material, or any other material parameter, through the Graphics → Materials menu. Note that the opacity will vary dramatically between the VMD window and Tachyon render. 
 
@@ -54,7 +54,7 @@ Tips for wide shots
 
 1.  For drawing method, NewCartoon is good for showing secondary structures, while Surf is good for showing sterics and/or contacts. For material, use either Diffuse (preferred), AOShiny, AOChalky or AOEdgy.
 2.  To make surface representations smoother, do not include hydrogen atoms in atom selection.
-3.  To show a Surf representation on top of NewCartoon, set the Surf material to Glass1 and color to White. Alternatively, use Ghost in conjunction with the -shadow\_filter\_off option.
+3.  To show a Surf representation on top of NewCartoon, set the Surf material to Glass1 and color to White. Alternatively, use Ghost in conjunction with the `-shadow_filter_off` option.
 4.  A nice coloring method (esp. for multimeric proteins) for NewCartoon is coloring by Index, which gives a color gradient over the atom indices. One can control the atom range over which the color gradient is computed at Trajectory → Color Scale Data Range.
 
 Tips for trajectories
@@ -82,3 +82,34 @@ It is always a good idea to use Photoshop (or similar software) to do some post-
 The default labelling tools for atoms, bonds, angles, etc (found under Mouse → Label) are likely not suitable for publication. If needed, you should add these labels in with some post-processing software. 
 
 Again, **[HERE](/download/attachments/232101322/VMDRC?version=1&modificationDate=1591802932000&api=v2)** is a sample .vmdrc file that will set most of the defaults listed above. Just in case you missed it before.
+
+How to color (carbon) atoms of different residues separately
+-----------------------------------------------------------
+It turns out that it's not so easy if you have multiple residues in the licorice representation in your protein that you'd like the carbon atoms to be colored differently, since if you just change the coloring scheme per atom, it will make all the carbons the same. There's a slick way to getting around this that I found [here](https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/22676.html) in the VMD mailing list. The commands are so:
+```
+# Script colorsel.tcl
+# Works with Coloring Method "Type"
+#
+# Usage: colorsel [atomselect top "resid xx and carbon"] color
+# color can be any of the 33 colors defined in VMD
+
+proc colorsel {selection color} {
+    # List of the 33 colors in VMD 1.9.1
+    set colorlist {blue red gray orange yellow tan silver green white pink cyan purple lime \
+                   mauve ochre iceblue black yellow2 yellow3 green2 green3 cyan2 cyan3 blue2 \
+                   blue3 violet violet2 magenta magenta2 red2 red3 orange2 orange3}
+    set num [lsearch $colorlist $color]
+
+    # Custom list of 33 characters usually unused as Type
+    set charlist {A D G J M O Q R T U V W X Y 0 1 2 3 4 5 6 7 8 9 ! @ # $ % ^ & + -}
+    set char [lindex $charlist $num]
+
+    # Create a new type and assign it to selected atoms
+    $selection set type $char
+
+    # Colorize the new type with wanted color
+    color Type $char $color
+} 
+```
+
+One thing that is slightly annoying about this workaround is that once you set the color of an atom using the command `colorsel ...` you can't change it. The only way around this then is to restart VMD. I recommend figuring it out once and then saving all your commands/settings in a `.vmd` file.

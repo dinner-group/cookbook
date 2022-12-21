@@ -26,8 +26,11 @@ It might be useful to explore the following commands to see all of the partition
 
 More information on modules on Midway can be found in [Notes on Midway Modules](/display/thecookbook/Notes+on+Midway+Modules). In the next sections, I will describe how to take advantage of the above resources by using the SLURM job scheduler. 
 
+
+Other useful information about submitting jobs using SLURM is found at this [website](https://vsoch.github.io/lessons/sherlock-jobs/) from Stanford.
+
 Interactive Job
-===============
+--------------
 
 An interactive job gives you a terminal on a compute node that you can type commands into. You can request an interactive job using the `sinteractive` command. Note that you'll have to wait for a bit until the compute nodes are free enough to give you an allocation.
 
@@ -40,7 +43,7 @@ sinteractive --time=3:00:00 --partition=weare-dinner2 --account=weare-dinner --q
 Note that the flag _\--mem=56G_ would request the same amount of total memory.
 
 Batch Job
-=========
+---------
 
 A batch job will run a bash script some time in the future. Here is an example of a Midway2 sbatch script.
 
