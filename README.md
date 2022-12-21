@@ -1,6 +1,6 @@
 # cookbook
 
-* [Home](README.md)
+* [Home](./Home.md)
   * How-To Pages
     * [.bashrc Files](./Making-a-Useful-.bashrc-file.md)
     * [Run Jupyter Notebooks on a Compute Node](./Run-Jupyter-Notebooks-on-a-Compute-Node.md)

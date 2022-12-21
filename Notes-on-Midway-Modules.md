@@ -1,4 +1,4 @@
-# Notes-on-Midway-Modules.md
+# Notes on Midway Modules
 These are my notes on the state of modules on Midway.
 
 General Notes

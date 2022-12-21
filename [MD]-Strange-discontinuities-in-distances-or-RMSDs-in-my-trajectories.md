@@ -1,4 +1,4 @@
-# [MD]-Strange-discontinuities-in-distances-or-RMSDs-in-my-trajectories.md
+# [MD] Strange-discontinuities in distances or RMSDs in my trajectories
 Problem
 -------
 

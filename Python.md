@@ -1,4 +1,4 @@
-# Python.md
+# Python
 _Work in progress, Chatipat will write more eventually. Feel free to edit._
 
 We use _Python_ for most of our data analysis.
@@ -41,6 +41,10 @@ Numba
 -----
 
 Numba takes a subset of Python code and makes it run faster. It is useful for numerical, loop-heavy code that you would typically write in a low-level language.
+
+Jax
+---
+[Jax](https://jax.readthedocs.io/en/latest/#) is a library which combines vectorization, just-in-time compilation (including on GPUs!) and autograd. It's primarily used in machine learning contexts for the autograd capabilities, but it has the great benefit of also being able to compile high-level Python code (unlike Numba, which mostly only works for numerical methods) for high performance.
 
 Parallelization and Concurrency
 ===============================

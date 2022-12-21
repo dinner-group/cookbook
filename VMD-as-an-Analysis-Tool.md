@@ -1,4 +1,4 @@
-# VMD-as-an-Analysis-Tool.md
+# VMD as an Analysis Tool
 VMD, especially when integrated with the molecular dynamics package NAMD, can be much more than a visualization and rendering package. This page will illustrate some of the most useful VMD/NAMD functionalities for interpreting and analyzing MD trajectories. To use this page, you need to be familiar with the basics of TCL scripting in VMD, which you can learn with [this tutorial.](http://www.ks.uiuc.edu/Training/Tutorials/vmd/tutorial-html/node4.html) An example of a more complex TCL script that could be used for data analysis is at the end of [this section](http://www.ks.uiuc.edu/Training/Tutorials/vmd/tutorial-html/node5.html) of the tutorial. Much of this type of scripting can be done via the GUI - however, you can't use the GUI tp process a large amount of data from a production run on Midway. For this, scripting is much more useful. You can run a tcl script in the GUI by typing "source ${SCRIPT\_NAME}.tcl" in the Tk Console (input for tcl scripting in the GUI), accessed by going to Extensions → Tk Console. To run on via the command line (to, for example, run on a compute node) you can use the following command:
 
     #If you do not need to feed in any arguments to your script, omit the -arg flag
@@ -199,24 +199,63 @@ Measuring Solvent Accessible Surface Areas (SASAs)
 
 You can also use VMD's [measure](https://www.ks.uiuc.edu/Research/vmd/vmd-1.8.3/ug/node121.html) command to calculate a variety of things, including the solvent accessible surface area of particular residues/selections. The GROMACS equivalent is the gmx [sasa](http://manual.gromacs.org/documentation/2018/onlinehelp/gmx-sasa.html) command.
 
-  
+Fixing periodic boundary conditions (PBC)
+-----------------------------------------
+Often the PBC wrapping in simulations makes it impossible to compute CVs correctly, so you will want to wrap your protein in the the same box and not have it go over the edge (usually). This can be done in PLUMED as explained [here](./%5BMD%5D-Strange-discontinuities-in-distances-or-RMSDs-in-my-trajectories.md]) but you can also preprocess your trajectories in VMD using the [pbctools](https://www.ks.uiuc.edu/Research/vmd/plugins/pbctools/) package.
 
-*   Page:
+An example of a script to center the (wrapped, or whole) protein in the box is given:
+```
+package require pbctools
+
+# these lines load the file, they should be changed 
+# according to your needs
+set psfname civsd-all
+set dcdname [lindex $argv 0]
+set dirpsf /project/dinner/scguo/ci-vsd
+set dirdcd /project/dinner/scguo/ci-vsd/pmepot
+set firstframe [lindex $argv 1]
+set lastframe [lindex $argv 2]
+set molid [mol new $dirpsf/$psfname.prmtop]
+mol addfile $dirdcd/$dcdname.dcd first $firstframe last $lastframe waitfor all
+
+set iframe [molinfo top get frame]
+
+# this command makes sure the protein is whole and the COM is
+# centered in the box
+pbc wrap -centersel "protein" -center com -compound residue -all
+
+# this for loop goes through each atom of the protein and shifts
+# them so overall they are centered
+for {set i 0} {$i <= $iframe} {incr i} {
+    set sel [atomselect top "protein and backbone" frame $i]
+    foreach {xi yi zi} [measure center $sel] {}
+    set pbcbox [pbc get -first $i -last $i]
+    set px [lindex [lindex $pbcbox 0] 0]
+    set py [lindex [lindex $pbcbox 0] 1]
+    set pz [lindex [lindex $pbcbox 0] 2]
+    set xm [expr $xi - 0.5*$px]
+    set ym [expr $yi - 0.5*$py]
+    set zm [expr $zi - 0.5*$pz]
+
+    pbc wrap -sel "not protein" -compound res -shiftcenter "$xm $ym $zm" -first $i -last $i
+    set sel1 [atomselect top all frame $i]
+    set comx [expr -1 * $xi]
+    set comy [expr -1 * $yi]
+    set comz [expr -1 * $zi]
+    $sel1 moveby "$comx $comy $comz"
+}
+
+# writes the final coordinates
+animate write dcd $dirdcd/${dcdname}_wrap.dcd waitfor all
+
+exit
+```
+  
+Related Pages
+------------
+*   [PLUMED Tips and Tricks](/display/thecookbook/PLUMED+Tips+and+Tricks) 
+*   [VMD as an Analysis Tool](/display/thecookbook/VMD+as+an+Analysis+Tool)
+* [\[GM4\] Only one job runs at a time](/display/thecookbook/%5BGM4%5D+Only+one+job+runs+at+a+time)
+*  [Molecular Dynamics Essentials](/display/thecookbook/Molecular+Dynamics+Essentials)
     
-    [PLUMED Tips and Tricks](/display/thecookbook/PLUMED+Tips+and+Tricks)
-    
-*   Page:
-    
-    [VMD as an Analysis Tool](/display/thecookbook/VMD+as+an+Analysis+Tool)
-    
-*   Page:
-    
-    [\[GM4\] Only one job runs at a time](/display/thecookbook/%5BGM4%5D+Only+one+job+runs+at+a+time)
-    
-*   Page:
-    
-    [Molecular Dynamics Essentials](/display/thecookbook/Molecular+Dynamics+Essentials)
-    
-*   Page:
-    
-    [\[MD/VMD\] "Expected integer but got 08" Error When Running TCL Script](/pages/viewpage.action?pageId=249004208)
+*  [\[MD/VMD\] "Expected integer but got 08" Error When Running TCL Script](/pages/viewpage.action?pageId=249004208)
