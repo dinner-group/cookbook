@@ -10,22 +10,29 @@ Regardless of whether you are using Python on your local machine or on some clus
 
   
 
-If using Python on Midway, you have a few options. You can certainly use `module avail python` to see what versions of python are available, and load your favorite version. This is useful in particular if you are not using many custom packages. If you want to install packages of your own, it is likely easiest to put your own Anaconda installation on Midway, and use that version of python, and avoid using any pre-loaded version of python altogether. You can download the Linux installer from the previously linked page, use` scp` to move it to midway (your `/project2/dinner` folder is likely the best location). You should export the correct path to make sure you are using your newly-installed version of python, and not Midway's default version. It is possible that this installation breaks ThinLinc when you try to log into Midway in the future, likely because the installation [messed with your .bashrc file](./Make-a-Useful-.bashrc-file.md) in a not-so-cool way. You can fix that by [following these directions](./ThinLinc-stops-working-after-installing-Anaconda.md). 
+If using Python on Midway, the best option is to install your own copy of Anaconda on Midway, and use that version of python.
+The preloaded versions on Midway are generally to be avoided.
+You can download (or `curl`) the Linux installer from the previously linked page, use` scp` to move it to Midway (your `/project/dinner/${USERNAME}/` directory is likely the best location). You should export the correct path to make sure you are using your newly-installed version of python, and not Midway's default version. It is possible that this installation breaks ThinLinc when you try to log into Midway in the future, likely because the installation [messed with your .bashrc file](./Make-a-Useful-.bashrc-file.md) in a not-so-cool way. You can fix that by [following these directions](./ThinLinc-stops-working-after-installing-Anaconda.md). 
 
 Generally Useful Libraries
 ==========================
 
 NumPy
 -----
+See [below](#numpy-1).
 
 SciPy
 -----
+Important scientific programming package with useful functions for performing linear algebra routines, optimization, and much more.
 
-Matplotlib
+matplotlib
 ----------
+Good for plotting and [making figures](./Figure-Creation.md).
+Best combined with other packages such as `seaborn`.
 
 scikit-learn
 ------------
+Package with **many** machine learning tools, such as clustering, regression, cross-validation, and more.
 
 Optimization
 ============
@@ -75,6 +82,10 @@ Dask is a very full featured solution to many parallelization and concurrency pr
 
 GPU Programming
 ===============
+
+Jax
+---
+Jax support drop-in acceleration with GPUs for matrix-multiply heavy code!
 
 CuPy
 ----

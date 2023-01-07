@@ -1,4 +1,8 @@
 # Midway Essentials
+
+**Start here!!**
+
+
 One of the first things you should do when you join the Dinner group is connect to Midway, our computing cluster at UChicago. To access Midway, you will first need an [RCC](https://rcc.uchicago.edu/) account. This will give you access to the two clusters we use most often - Midway2 and Midway3. These two clusters are not currently cross-mounted, meaning that you have to log onto each one separately, and files are not shared between them. Access to Midway3 also comes with access to Beagle3, a GPU cluster. Midway3 and Beagle 3 _are_ cross-mounted, meaning you can access both by just logging into Midway3. Similarly, access to Midway2 comes with access to GM4, another GPU cluster.
 
 To get an RCC account, first fill out the [General User Account Request](https://rcc.uchicago.edu/accounts-allocations/general-user-account-request) form. Aaron's PI account name is _pi-dinner_. You might need a rough overview of the type of work you will be doing, but these fields don't really matter a huge amount. Take a reasonable guess based on what you are interested in - that should be fine. Normally, these requests are processed in a week or less. If you have any questions (about setting up an account, or just in general), feel free to email [help@rcc.uchicago.edu](mailto:help@rcc.uchicago.edu) and ask. They are, writ large, a very helpful resource if you are having any problems with Midway (installing certain modules, troubleshooting unexpected behavior in SLURM, etc.) throughout your research career. 
