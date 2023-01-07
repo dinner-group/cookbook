@@ -5,6 +5,7 @@ Analysis papers such as DGA, VAC, etc.
   * [Thiede et al. 2019](http://arxiv.org/abs/1810.01841): First DGA paper
   * [Strahan et al. 2021](https://doi.org/10.1021/acs.jctc.0c00933): Correct reformulation
 * VAC/TICA/etc.
+  * [Schultze and Grubmüller](https://pubs.acs.org/doi/10.1021/acs.jctc.1c00273): **Read this first**
   * [Schwantes and Pande 2013](https://doi.org/10.1021/ct300878a): TICA
   * [Noé and Nüske 2013](http://epubs.siam.org/doi/10.1137/110858616): VAC
   * [Wu et al. 2017](http://aip.scitation.org/doi/10.1063/1.4979344): Reweighting short trajectories
