@@ -86,6 +86,7 @@ GPU Programming
 Jax
 ---
 Jax support drop-in acceleration with GPUs for matrix-multiply heavy code!
+Having issues with multiple GPUs? Try [setting the appropriate environment variables](./multiple-notebooks-jax.md).
 
 CuPy
 ----

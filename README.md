@@ -5,6 +5,7 @@
     * [.bashrc Files](./Making-a-Useful-.bashrc-file.md)
     * [Run Jupyter Notebooks on a Compute Node](./Run-Jupyter-Notebooks-on-a-Compute-Node.md)
   * [Python](./Python.md)
+    * [Figure Creation](./Figure-Creation.md)
     * [Introductory Jupyter Modules](./Introductory-Jupyter-Modules.md)
   * [Midway Essentials](./Midway-Essentials.md)
     * [Notes on Midway Modules](./Notes-on-Midway-Modules.md)
@@ -25,7 +26,8 @@
   * [AFINES](./AFINES.md)
     * [Installing AFINES](./Installing-AFINES.md)
     * [AFINES Branches](./AFINES-Branches.md)
-  * [Figure Creation](./Figure-Creation.md)
+    * [Markov State Modeling](./Markov-State-Modeling.md)
+    * [Dynamical Galerkin Approximation](./DGA.md)
   * Troubleshooting Articles
     * [\[GM4\] Only one job runs at a time](./%5BGM4%5D-Only-one-job-runs-at-a-time.md)
     * [\[MD/VMD\] "Expected integer but got 08" Error When Running TCL Script](./%5BMD_VMD%5D-%20Expected-integer-but-got-08%20-Error-When-Running-TCL-Script.md)
@@ -37,5 +39,6 @@
     * [Parallel jobs only taking up one node of a multi-node job](./Parallel-jobs-only-taking-up-1-node-of-a-multi-node-job-(common-with-GROMACS-5.1.4).md)
     * [ThinLinc stops working after installing Anaconda](./ThinLinc-stops-working-after-installing-Anaconda.md)
     * [\[Midway\] Intel MPI isn't working](./%5BMidway%5D%20Intel%20MPI%20isn't%20working.md)
+    * [I can't run multiple Jupyter notebooks with GPUs in Jax](./multiple-notebooks-jax.md)
 
 
