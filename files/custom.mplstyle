@@ -1,0 +1,46 @@
+# Figure settings                                                                                                                                               [1
+figure.figsize: 3, 3
+figure.dpi: 150
+
+# Legend 
+legend.frameon: False
+
+# Lines
+lines.linewidth: 0.75 
+lines.markersize: 2
+
+# Ticks
+xtick.direction: in 
+ytick.direction: in 
+
+xtick.top: False
+ytick.right: False
+
+xtick.major.pad: 5
+ytick.major.pad: 5
+
+xtick.major.size: 3
+xtick.minor.size: 2
+xtick.minor.visible: False
+
+ytick.major.size: 3
+ytick.minor.size: 2
+ytick.minor.visible: False
+
+xtick.major.width: 0.5
+xtick.minor.width: 0.3
+
+ytick.major.width: 0.5
+ytick.minor.width: 0.3
+
+# Fonts
+font.family: "Computer Modern Sans Serif" 
+font.size: 8
+text.usetex: True
+
+# Axes
+axes.linewidth: 0.6
+axes.formatter.limits: -3, 4
+axes.formatter.use_mathtext: True
+axes3d.grid: False
+
