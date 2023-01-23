@@ -59,4 +59,36 @@ The default matplotlib colormap (viridis) is not bad, but you can also define yo
     
     plt.pcolor(x, y, z, cmap='diverging')
 
-[![](/s/-tpdgys/8803/fjj6gm/5.1.2/_/download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-file.png)custom.mplstyle](/download/attachments/265716067/custom.mplstyle?version=1&modificationDate=1653859854000&api=v2)
+
+# Rendering publication-quality images
+Typically speaking, you will want to avoid image formats such as `.png` or `.jpg` given that these are compressed (many journals also do not accept `png` files).
+Instead, your figures should ideally be in *vector graphics* format, which basically means that they can be resized indefinitely without losing quality (this is because vector graphics formats basically encode the geometrical information needed to scale an image at any size).
+Examples of vector graphics formats include `.svg`, `.pdf` (try zooming in one one of your PDF texts once and see that the edges of the letters don't degrade in sharpness), and `.eps`. 
+My preferred format is `.pdf` since it integrates very smoothly with LaTeX and can be opened in basically any software.
+
+In particular, when you go to save an image in Matplotlib, use the following lines to get your plot/image in the `pdf` format:
+```
+# make image 
+fig = plt.figure(figsize=(width, height))
+img = plt........
+plt.savefig("NAME.pdf", bbox_inches='tight')
+```
+The keyword argument `bbox_inches='tight'` insures that the edges of your figure don't get cut off.
+Note that you can set the exact size of your image in the `figsize` keyword argument (which is by default in units of **inches**) for proper sizing.
+
+(As a rule of thumb, two column-wide figures should be around 6.5 inches width and one-column wide figures should be around 3.25 inches wide. Check the journal you're submitting to for more detailed information.)
+
+Finally, it's important to note that for image-like plots with lots of info such as `pcolormesh` or `scatter`, the default saving as `pdf` format will make every single square or point a different vector graphic and probably make your image impossibly slow to load.
+To get around this, you should set the `rasterized=True` keyword in making your plot.
+Matplotlib has a good [example](https://matplotlib.org/stable/gallery/misc/rasterization_demo.html) of how to do this.
+Note that the rasterization requires a `dpi` specification to determine the quality level, since it no longer has the same scaling properties as a vector graphic.
+In general, **500 dpi** is usually a good setting for publication-quality figures.
+
+```
+# example:
+fig = plt.figure()
+img = plt.scatter(x, y, rasterized=True)
+
+# set dpi for rasterized part (i.e. the scatter plot)
+plt.savefig("NAME.pdf", dpi=500, bbox_inches='tight')
+```
