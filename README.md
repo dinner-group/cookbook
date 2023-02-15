@@ -23,11 +23,11 @@
     * [Installing GROMACS](./Installing-GROMACS-on-Bridges-(XSEDE.md).md)
     * [Replica Exchange Umbrella Sampling (REUS.md)](./Replica-Exchange-Umbrella-Sampling-(REUS).md)
     * [Alpha-Helical Content of Proteins](./Alpha-helical-content-of-protein-sequences.md)
+    * [Markov State Modeling](./Markov-State-Modeling.md)
+    * [Dynamical Galerkin Approximation](./DGA.md)
   * [AFINES](./AFINES.md)
     * [Installing AFINES](./Installing-AFINES.md)
     * [AFINES Branches](./AFINES-Branches.md)
-    * [Markov State Modeling](./Markov-State-Modeling.md)
-    * [Dynamical Galerkin Approximation](./DGA.md)
   * Troubleshooting Articles
     * [\[GM4\] Only one job runs at a time](./%5BGM4%5D-Only-one-job-runs-at-a-time.md)
     * [\[MD/VMD\] "Expected integer but got 08" Error When Running TCL Script](./%5BMD_VMD%5D-%20Expected-integer-but-got-08%20-Error-When-Running-TCL-Script.md)
