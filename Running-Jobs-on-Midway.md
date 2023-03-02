@@ -1,4 +1,4 @@
-# Running-Jobs-on-Midway.md
+# Running Jobs on Midway
 Useful Commands
 ===============
 
@@ -14,15 +14,15 @@ It might be useful to explore the following commands to see all of the partition
 
 `scontrol` — specific details about jobs, partitions, nodes, etc.
 
-`rcchelp balance` — how many SUs we have left
-
-`rcchelp usage` — how many SUs you've used
-
 `sinfo -p <partition_name>` — how many nodes are available on partition
 
 `module list` — the modules currently loaded/accessible to you
 
 `module avail `— all modules made available by RCC. You can look for a specific software with `module avail <software>`. You can load/unload a specific module with `module load <software>` or `module unload <software>`
+
+`rcchelp balance` — how many SUs we have left
+
+`rcchelp usage` — how many SUs you've used
 
 More information on modules on Midway can be found in [Notes on Midway Modules](/display/thecookbook/Notes+on+Midway+Modules). In the next sections, I will describe how to take advantage of the above resources by using the SLURM job scheduler. 
 
@@ -34,13 +34,13 @@ Interactive Job
 
 An interactive job gives you a terminal on a compute node that you can type commands into. You can request an interactive job using the `sinteractive` command. Note that you'll have to wait for a bit until the compute nodes are free enough to give you an allocation.
 
-For example, to request a 3-hour long interactive job on the weare-dinner2 (on Midway2) partition with 28 MPI processes and 28 \* 2 GB = 56 GB of memory, 
+For example, to request a 3-hour long interactive job on the `dinner` partition (on Midway3) with 48 MPI processes and 48 \* 2 GB = 96 GB of memory, 
 
 ```
-sinteractive --time=3:00:00 --partition=weare-dinner2 --account=weare-dinner --qos=weare-dinner --nodes=1 --ntasks=28 --cpus-per-task=1 --mem-per-cpu=2G
+sinteractive --time=3:00:00 --partition=dinner --account=pi-dinner --qos=dinner --nodes=1 --ntasks=48 --cpus-per-task=1 --mem-per-cpu=2G
 ```
 
-Note that the flag _\--mem=56G_ would request the same amount of total memory.
+Note that the flag `--mem=96G` would request the same amount of total memory.
 
 Batch Job
 ---------
@@ -50,25 +50,25 @@ A batch job will run a bash script some time in the future. Here is an example o
 ```
 #!/bin/bash
  
-#SBATCH --job-name=myjob
-#SBATCH --output=myjob.out
-#SBATCH --error=myjob.err
+#SBATCH --job-name=myjob        # the name appearing in squeue
+#SBATCH --output=myjob.out      # output to STDOUT
+#SBATCH --error=myjob.err       # output to STDERR
  
 #SBATCH --time=6:00:00
  
-#SBATCH --partition=weare-dinner2
-#SBATCH --account=weare-dinner
-#SBATCH --qos=weare-dinner
+#SBATCH --partition=dinner
+#SBATCH --account=pi-dinner
+#SBATCH --qos=dinner
  
 #SBATCH --nodes=1
-#SBATCH --ntasks=28
+#SBATCH --ntasks=48
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=2G
  
 #SBATCH --export=NONE
  
-#Load GROMACS 2019.4 patched with PLUMED 2.3
-source /project2/dinner/gromacs/sourceme.sh
+#Load GROMACS
+module load gromacs
  
 #Example MD commands - notice the use of mpirun to run multi-core simulations
 gmx_mpi grompp #fill in arguments
@@ -76,6 +76,52 @@ mpirun -n 28 gmx_mpi mdrun -ntomp #fill in arguments
 ```
 
 Note that you use _mpirun_ to explicitly allocate multiple cores to a specific task. 
+
+Midway3 Partitions
+==================
+
+caslake
+-------
+
+This partition is accessible to everyone on Midway3. However, currently queue times are still almost instantaneous (due to the slow adoption of Midway3 across PSD). Each caslake node has 48 processors and 180G of usable memory (anything above _\--mem=180G_ will return an error). The maximum run time allowed is 1.5 days (1-12:00:00). We are charged SUs for using these nodes, by the formula: max(#cpus, mem/4000MB) \* time/hr. To use these nodes, edit your sbatch script to include the following:
+
+```
+#SBATCH --partition=caslake
+#SBATCH --account=pi-dinner
+```
+
+dinner
+------
+
+These nodes are only used by the dinner group. There are 8 dinner nodes, each with 48 processors and 375G of usable memory (anything above _\--mem=375G_ will return an error). The maximum run time allowed is 2 days (2-00:00:00) on the `dinner` qos. We aren't charged SUs for using them. However, keep in mind that these resources are shared across the entire group, and currently are heavily used. It is good practice to make sure there are at least a few nodes available at any given time. If you want to use a significant portion of these resources, you need to ask the other users if it is OK to hog the space. A good rule of thumb is to try to use less than 2 or 3 full nodes at any given time.  To run a job on these nodes, edit your sbatch script to include the following:
+
+```
+#SBATCH --partition=dinner
+#SBATCH --account=pi-dinner
+```
+
+dinner-hm
+---------
+
+This node is only used by the dinner group. There is 1 dinner-hm node, where -hm stands for high memory. It has 48 processors and 1500G of usable memory (anything above _\--mem=1500G_ will return an error). The maximum run time allowed is 2 days (2-00:00:00) on the `dinner` qos. We aren't charged SUs for using this node, and it is most useful for very memory-intensive applications. To run a job on this node, edit your sbatch script to include the following:
+
+```
+#SBATCH --partition=dinner-hm
+#SBATCH --account=pi-dinner
+#SBATCH --qos=dinner
+```
+
+beagle3
+-------
+
+These nodes are shared by multiple groups. There are 44 nodes with GPUs, and 4 high-memory CPU-only nodes. Each GPU node has 32 processors, 250G of usable memory, and for the GPU nodes, and 4 GPUs (either Nvidia A100 or Nvidia A40). The maximum run time allowed is 2 days (2-00:00:00) on the _beagle3_ qos, and 4 days (4-00:00:00) on the _beagle3-long_ qos. Per user, you are allowed to use 16 nodes at one time on the _beagle3_ qos, and 4 nodes at one time on the _beagle3-long_ qos. There are no group restrictions, unlike GM4 on Midway2. Queuing times for this partition are generally quite small. This partition is particularly useful for large-scale, production-level MD simulations and ML applications. To run a job on these nodes, edit your sbatch script to include the following:
+
+```
+#SBATCH --partition=beagle3
+#SBATCH --account=pi-dinner
+#SBATCH --qos=beagle3
+##SBATCH --qos=beagle3-long        #only needed for long simulations
+```
 
 Midway2 Partitions
 ==================
@@ -143,51 +189,6 @@ Note that this flag is equivalent to `--gpus-per-node`. So the above command is 
 
 Additional information can be found at [gm4.rcc.uchicago.edu](http://gm4.rcc.uchicago.edu).
 
-Midway3 Partitions
-==================
-
-caslake
--------
-
-This partition is accessible to everyone on Midway3. However, currently queue times are still almost instantaneous (due to the slow adoption of Midway3 across PSD). Each caslake node has 48 processors and 180G of usable memory (anything above _\--mem=180G_ will return an error). The maximum run time allowed is 1.5 days (1-12:00:00). We are charged SUs for using these nodes, by the formula: max(#cpus, mem/4000MB) \* time/hr. To use these nodes, edit your sbatch script to include the following:
-
-```
-#SBATCH --partition=caslake
-#SBATCH --account=pi-dinner
-```
-
-dinner
-------
-
-These nodes are only used by the dinner group. There are 8 dinner nodes, each with 48 processors and 375G of usable memory (anything above _\--mem=375G_ will return an error). The maximum run time allowed is 2 days (2-00:00:00) on the `dinner` qos. We aren't charged SUs for using them. However, keep in mind that these resources are shared across the entire group, and currently are heavily used. It is good practice to make sure there are at least a few nodes available at any given time. If you want to use a significant portion of these resources, you need to ask the other users if it is OK to hog the space. A good rule of thumb is to try to use less than 2 or 3 full nodes at any given time.  To run a job on these nodes, edit your sbatch script to include the following:
-
-```
-#SBATCH --partition=dinner
-#SBATCH --account=pi-dinner
-```
-
-dinner-hm
----------
-
-This node is only used by the dinner group. There is 1 dinner-hm node, where -hm stands for high memory. It has 48 processors and 1500G of usable memory (anything above _\--mem=1500G_ will return an error). The maximum run time allowed is 2 days (2-00:00:00) on the `dinner` qos. We aren't charged SUs for using this node, and it is most useful for very memory-intensive applications. To run a job on this node, edit your sbatch script to include the following:
-
-```
-#SBATCH --partition=dinner-hm
-#SBATCH --account=pi-dinner
-#SBATCH --qos=dinner
-```
-
-beagle3
--------
-
-These nodes are shared by multiple groups. There are 44 nodes with GPUs, and 4 high-memory CPU-only nodes. Each GPU node has 32 processors, 250G of usable memory, and for the GPU nodes, and 4 GPUs (either Nvidia A100 or Nvidia A40). The maximum run time allowed is 2 days (2-00:00:00) on the _beagle3_ qos, and 4 days (4-00:00:00) on the _beagle3-long_ qos. Per user, you are allowed to use 16 nodes at one time on the _beagle3_ qos, and 4 nodes at one time on the _beagle3-long_ qos. There are no group restrictions, unlike GM4 on Midway2. Queuing times for this partition are generally quite small. This partition is particularly useful for large-scale, production-level MD simulations and ML applications. To run a job on these nodes, edit your sbatch script to include the following:
-
-```
-#SBATCH --partition=beagle3
-#SBATCH --account=pi-dinner
-#SBATCH --qos=beagle3
-##SBATCH --qos=beagle3-long        #only needed for long simulations
-```
 
 Example Submit Scripts
 ======================
@@ -235,65 +236,6 @@ Single Node, GPUs, Midway3
 #SBATCH --mem=250G
 #SBATCH --gres=gpu:2
 #SBATCH --export=NONE
-```
-
-Parallel Batch Jobs
-===================
-
-You can use the `gnu parallel` utility to run multiple unconnected tasks at once on the same node (or across nodes, though I haven't tried this). The [guide](https://rcc.uchicago.edu/docs/running-jobs/srun-parallel/index.html) on the RCC website is quite helpful for figuring out how to do this. Here's an example for running a Python script for a whole bunch of input files in parallel:
-
-```
-#!/bin/sh
-#SBATCH --job-name=load-frames
-#SBATCH --output=load-frames.out
-#SBATCH --error=load-frames.err
-#SBATCH --partition=dinner
-#SBATCH --account=pi-dinner
-#SBATCH --qos=dinner
- 
-#SBATCH --time=48:00:00
-#SBATCH --nodes=1
-#SBATCH --ntasks=48
-#SBATCH --mem-per-cpu=16G
- 
-# NOTE DO NOT USE THE --mem= OPTION
- 
-source ~/.zshrc
- 
-module load vmd
-conda activate /project/dinner/scguo/anaconda3/envs/py39
- 
-# Load the default version of GNU parallel.
-module load parallel
- 
-# When running a large number of tasks simultaneously, it may be
-# necessary to increase the user process limit.
-ulimit -u 10000
- 
-# This specifies the options used to run srun. The "-N1 -n1" options are
-# used to allocates a single core to each task.
-srun="srun --exclusive -N1 -n1"
- 
-# This specifies the options used to run GNU parallel:
-#
-#   --delay of 0.2 prevents overloading the controlling node.
-#
-#   -j is the number of tasks run simultaneously.
-#
-#   The combination of --joblog and --resume create a task log that
-#   can be used to monitor progress.
-parallel="parallel --delay 0.2 -j $SLURM_NTASKS --joblog runtask.log"
- 
-echo "  started at `date`"
-topfile="/project/dinner/scguo/ci-vsd/models/MD-clustering-center/civsd.psf"
-echo $topfile
-echo $(which python)
-script="/project/dinner/scguo/ci-vsd/python/load_frames.py"
- 
-# run the script for every file q_X_Y.txt where X runs from 2-8 and Y runs from 0-9 (inclusive)
-$parallel "$srun python $script q_{1}_{2}.txt $topfile q{1}{2}.xtc" ::: {2..8} ::: {0..9}
- 
-echo "  finished at `date`"
 ```
   
 

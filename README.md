@@ -10,6 +10,7 @@
   * [Midway Essentials](./Midway-Essentials.md)
     * [Notes on Midway Modules](./Notes-on-Midway-Modules.md)
     * [Running Jobs on Midway](./Running-Jobs-on-Midway.md)
+    * [Ensemble Jobs on Midway](./ensemble.md)
   * [Molecular Dynamics Essentials](./Molecular-Dynamics-Essentials.md)
     * [GROMACS 2019.4 with GPU Support](./GROMACS-2019.4-with-GPU-Support.md)
       * [Run GROMACS on the GM4 Cluster](./Run-Gromacs-on-the-GM4-Cluster.md)
