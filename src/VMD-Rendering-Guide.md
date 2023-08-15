@@ -1,7 +1,7 @@
 # VMD Rendering Guide
 This guide was originally developed by Lu Hong, and has since been (lightly) expanded by Adam Antoszewski. The normal VMD defaults are not suited for publication-quality figures.
 
-**[HERE](files/VMDRC)** is a sample .vmdrc file that will set most of the defaults listed below. You can save this as `${HOME}/.vmdrc` and these settings will apply by default to VMD. 
+**[HERE](../data/VMDRC)** is a sample .vmdrc file that will set most of the defaults listed below. You can save this as `${HOME}/.vmdrc` and these settings will apply by default to VMD. 
 
 General settings
 ----------------
