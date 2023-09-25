@@ -1,6 +1,6 @@
 # Running Jobs on Midway
 Useful Commands
-===============
+---------------
 
 It might be useful to explore the following commands to see all of the partitions, SUs, and data storage options that are available to you. 
 
@@ -287,6 +287,7 @@ The index can be accessed by the environment variable `$SLURM_ARRAY_TASK_ID` .
 `--dependency`
 
 Only run the job after the completion of another job (useful for building pipelines of jobs). For example, if I wanted to run a new job after job number $JOBID ends (either successfully or unsuccessfully), I could add the following dependency flag: _\--dependency=afterany:$JOBID_
+See [here](https://hpc-unibe-ch.github.io/slurm/dependencies.html) or [here](https://hpc.nih.gov/docs/job_dependencies.html) for useful information. You can get link multiple jobs together in the same script if you use the flat `--parsable` to get the jobid of the first job.
 
 `--mail-type`   
 `--mail-user` 
