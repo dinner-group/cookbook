@@ -16,7 +16,7 @@ Step-by-step guide
 	- You then need to give it specific permissions. The most basic ones are `repo`, `read:org` (under `admin:org`), and `workflow` for basic github operations. Click those boxes and any other specific permissions you may need
 
 This is what my settings look like:
-![](/img/github_auth_settings.png?raw=true)
+![](https://github.com/dinner-group/cookbook/blob/main/src/img/github_auth_settings.png)
 
 4. Click `generate token` when you're done
 5. You'll be taken to a page with the newly generated token. Copy it to your clipboard
