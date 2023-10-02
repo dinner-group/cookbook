@@ -41,5 +41,6 @@
   * [ThinLinc stops working after installing Anaconda](src/ThinLinc-stops-working-after-installing-Anaconda.md)
   * [\[Midway\] Intel MPI isn't working](src/%5BMidway%5D%20Intel%20MPI%20isn't%20working.md)
   * [I can't run multiple Jupyter notebooks with GPUs in Jax](src/multiple-notebooks-jax.md)
+  * [I can't use github commands on midway, authentication failed](src/Caching-Github-Auth-Tokens.md)
 
 
