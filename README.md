@@ -4,6 +4,7 @@
 * How-To Pages
   * [.bashrc Files](src/Making-a-Useful-.bashrc-file.md)
   * [Run Jupyter Notebooks on a Compute Node](src/Run-Jupyter-Notebooks-on-a-Compute-Node.md)
+  * [Use git](src/use-git.md)
 * [Python](src/Python.md)
   * [Figure Creation](src/Figure-Creation.md)
   * [Introductory Jupyter Modules](src/Introductory-Jupyter-Modules.md)

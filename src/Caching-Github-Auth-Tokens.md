@@ -1,4 +1,4 @@
-# Caching-Github-Auth-Tokens.md
+# Caching Github Auth Tokens
 
 If you ever want to `git push` or `git pull` or etc. from the cluster, you used to just have to give them your password. For some reason, they decided to make the process more complicated by creating these authentication tokens that are randomly generated and impossible to remember. You'll have to generate your own personal access token and cache it to make sure that you don't have to input the token every time
 
