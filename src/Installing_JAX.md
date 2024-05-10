@@ -23,8 +23,9 @@ The output of `conda config --show channels` should be:
       - nvidia
 
 We'll now install JAX packages.
+We install an older version of JAX for compatibility with the CUDA drivers on Beagle.
 
-    CONDA_OVERRIDE_CUDA=11.8 conda install jaxlib=*=*cuda* jax cuda-nvcc
+    CONDA_OVERRIDE_CUDA=11.8 conda install jaxlib[version='<0.4.26',build=*cuda*] jax[version='<0.4.26'] cuda-nvcc
 
 Make sure that cuda-nvcc is installed from the nvidia channel (cuda-nvcc from the conda-forge channel doesn't work).
 The output of `conda list cuda-nvcc` should contain nvidia in the channel column, for example:
