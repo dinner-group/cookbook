@@ -6,6 +6,7 @@
   * [Run Jupyter Notebooks on a Compute Node](src/Run-Jupyter-Notebooks-on-a-Compute-Node.md)
   * [Use git](src/use-git.md)
   * [Install JAX](src/Installing_JAX.md)
+  * [How to write a paper](src/How-to-write-a-paper.md)
 * [Python](src/Python.md)
   * [Figure Creation](src/Figure-Creation.md)
   * [Introductory Jupyter Modules](src/Introductory-Jupyter-Modules.md)
