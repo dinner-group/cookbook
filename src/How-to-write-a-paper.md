@@ -12,6 +12,9 @@ them throughout the process.
     C. Include key equations and derivations. 
     D. Identify the most pertinent literature. 
     E. Add progressively more detail.  Ultimately, each “bullet” should summarize the point of a paragraph in the paper in plain language.  The flow of logic should be clear.
+
+STOP HERE, give outline to Aaron for quick feedback to make sure that logic flows and that figures are reasonable. Repeat until polished and move forward with Aaron's approval
+
 3. Write the Methods section.  Everything needed to reproduce the calculation/experiment must be reported.  Be organized and document your methods as you do the research. 
 4. Write the Results section.
 5. Write the Introduction.
