@@ -7,6 +7,7 @@
   * [Use git](src/use-git.md)
   * [Install JAX](src/Installing_JAX.md)
   * [How to write a paper](src/How-to-write-a-paper.md)
+  * [How to make bibliographies](src/bibtex.md)
 * [Python](src/Python.md)
   * [Figure Creation](src/Figure-Creation.md)
   * [Introductory Jupyter Modules](src/Introductory-Jupyter-Modules.md)
