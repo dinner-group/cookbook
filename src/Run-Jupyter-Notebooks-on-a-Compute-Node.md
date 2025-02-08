@@ -43,3 +43,5 @@ Otherwise, you'll need to make an ssh tunnel into the compute node. For the case
 ```
 jupyter notebook --no-browser --ip=$(hostname -i) --port=any_number_between_15000_30000 
 ```
+
+A Python script that automatically makes the ssh tunnel and opens the notebook is available [here](https://github.com/dinner-group/cookbook/tree/main/data/jupyter-connect.py).
